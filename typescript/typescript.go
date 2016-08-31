@@ -206,7 +206,7 @@ func (t *Plugin) getTypescriptProjects() []string {
 		for i := range ignoreFolders {
 			if strings.Contains(path, ignoreFolders[i]) {
 				//t.logger.Println(path + " ignored")
-				return nil
+				return filepath.SkipDir
 			}
 		}
 

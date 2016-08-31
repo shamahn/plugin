@@ -146,7 +146,8 @@ func (i *iriscontrol) initializeChild() {
 		if !i.parentIsRunning() {
 			// starts the server with its old configuration
 			go func() {
-				if err := i.parent.Servers.OpenAll(); err != nil {
+				h := i.parent.Servers.Main().Handler
+				if err := i.parent.Servers.OpenAll(h); err != nil {
 					i.parent.Logger.Warningf(err.Error())
 				}
 			}()

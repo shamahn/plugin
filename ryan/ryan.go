@@ -17,7 +17,7 @@ import (
 // DefaultSymbol is the symbol for ryan router's optional parameters, which is '?'
 const (
 	DefaultSymbol = '?'
-	wildcardName  = "_iris_optional_parameterized_ryan_router_"
+	wildcard      = "*"
 )
 
 // Ryan is the ryan router plugin
@@ -55,7 +55,7 @@ func (r *Ryan) PreLookup(route iris.Route) {
 	path := route.Path()
 	if symbolIdx := strings.IndexByte(path, r.symbol); symbolIdx != -1 {
 		///TODO: Implementation here.
-		newPath := path[0:symbolIdx-1] + wildcardName
+		newPath := path[0:symbolIdx-1] + wildcard
 		parts := strings.Split(path, "/")
 		for _, part := range parts {
 			if part[0] == r.symbol {
@@ -67,7 +67,7 @@ func (r *Ryan) PreLookup(route iris.Route) {
 		route.SetPath(newPath)
 
 		// prepends the middleware for this route, yes each route will have its own 'router' first middleware because we want to use the ryan only when it is nessecary,
-		// we don't use iris.UseGlobal feature for performanrce reasons
+		// we don't use iris.UseGlobal feature for performance reasons
 		route.SetMiddleware(append(iris.Middleware{iris.HandlerFunc(func(ctx *iris.Context) {
 
 		})}, route.Middleware()...))
