@@ -3,6 +3,8 @@ package iriscontrol
 import (
 	"os"
 
+	"github.com/kataras/go-fs"
+	"github.com/kataras/go-installer"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/utils"
 )
@@ -25,21 +27,21 @@ func init() {
 
 func installAssets() {
 
-	if !utils.DirectoryExists(assetsPath) {
+	if !fs.DirectoryExists(assetsPath) {
 		errMsg := "\nProblem while downloading the assets from the internet for the first time. Trace: %s"
 
-		installedDir, err := utils.Install(assetsURL, assetsPath)
+		installedDir, err := installer.Install(assetsURL, assetsPath, true)
 		if err != nil {
 			panic(errMsg)
 		}
 
-		err = utils.CopyDir(installedDir, assetsPath)
+		err = fs.CopyDir(installedDir, assetsPath)
 		if err != nil {
 			panic(err)
 		}
 
 		// try to remove the unzipped folder
-		utils.RemoveFile(installedDir[0 : len(installedDir)-1])
+		fs.RemoveFile(installedDir[0 : len(installedDir)-1])
 	}
 }
 
