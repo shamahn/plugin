@@ -60,7 +60,7 @@ func (p *Plugin) PreListen(s *iris.Framework) {
 		s.Get(p.Config.Path+"/:provider", func(ctx *iris.Context) {
 			err := gothic.BeginAuthHandler(ctx)
 			if err != nil {
-				s.Logger.Warningf("\n[IRIS OAUTH MIDDLEWARE] Error:" + err.Error())
+				s.Logger.Println("\n[IRIS OAUTH MIDDLEWARE] Error:" + err.Error())
 			}
 		})(p.Config.RouteName)
 

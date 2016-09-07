@@ -6,11 +6,11 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/iris-contrib/logger"
 	"github.com/iris-contrib/npm"
 	"github.com/iris-contrib/plugin/editor"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/utils"
+	"log"
 )
 
 /* Notes
@@ -30,7 +30,7 @@ type (
 		// taken from Activate
 		pluginContainer iris.PluginContainer
 		// taken at the PreListen
-		logger *logger.Logger
+		logger *log.Logger
 	}
 )
 

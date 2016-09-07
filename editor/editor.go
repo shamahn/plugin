@@ -10,10 +10,10 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/iris-contrib/logger"
 	"github.com/iris-contrib/npm"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/utils"
+	"log"
 )
 
 const (
@@ -30,7 +30,7 @@ type (
 	// and a host which is listening for
 	Plugin struct {
 		config   *Config
-		logger   *logger.Logger
+		logger   *log.Logger
 		enabled  bool // default true
 		keyfile  string
 		certfile string

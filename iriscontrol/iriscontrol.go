@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/iris-contrib/middleware/basicauth"
-	"github.com/iris-contrib/template/html"
+	"github.com/kataras/go-template/html"
 	"github.com/kataras/iris"
 )
 
@@ -148,7 +148,7 @@ func (i *iriscontrol) initializeChild() {
 			go func() {
 				h := i.parent.Servers.Main().Handler
 				if err := i.parent.Servers.OpenAll(h); err != nil {
-					i.parent.Logger.Warningf(err.Error())
+					i.parent.Logger.Println(err.Error())
 				}
 			}()
 
@@ -163,7 +163,7 @@ func (i *iriscontrol) initializeChild() {
 
 			go func() {
 				if err := i.parent.Close(); err != nil {
-					i.parent.Logger.Warningf(err.Error())
+					i.parent.Logger.Println(err.Error())
 				}
 			}()
 		}

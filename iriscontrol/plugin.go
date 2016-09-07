@@ -4,7 +4,6 @@ import (
 	"os"
 
 	"github.com/kataras/go-fs"
-	"github.com/kataras/go-installer"
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/utils"
 )
@@ -22,7 +21,7 @@ var (
 // init just sets the assetsPath & current workingDir
 func init() {
 	workingDir, _ = os.Getwd()
-	assetsPath = utils.AssetsDirectory + utils.PathSeparator + "iris-control-assets" + utils.PathSeparator
+	assetsPath = utils.AssetsDirectory + fs.PathSeparator + "iris-control-assets" + fs.PathSeparator
 }
 
 func installAssets() {
@@ -30,7 +29,7 @@ func installAssets() {
 	if !fs.DirectoryExists(assetsPath) {
 		errMsg := "\nProblem while downloading the assets from the internet for the first time. Trace: %s"
 
-		installedDir, err := installer.Install(assetsURL, assetsPath, true)
+		installedDir, err := fs.Install(assetsURL, assetsPath, true)
 		if err != nil {
 			panic(errMsg)
 		}
