@@ -29,11 +29,9 @@ type (
 	// keyfile,certfile for TLS listening
 	// and a host which is listening for
 	Plugin struct {
-		config   *Config
-		logger   *log.Logger
-		enabled  bool // default true
-		keyfile  string
-		certfile string
+		config  *Config
+		logger  *log.Logger
+		enabled bool // default true
 		// after alm started
 		process *os.Process
 	}
@@ -80,16 +78,17 @@ func (e *Plugin) GetDescription() string {
 	return Name + " is a bridge between Iris and the alm-tools, the browser-based IDE for client-side sources. \n"
 }
 
-// PreListen runs before the server's listens, saves the keyfile,certfile and the host from the Iris station to listen for
+// PreListen runs before the server's listens,  creates the listener ( use of port parent hostname:DefaultPort if not exist)
 func (e *Plugin) PreListen(s *iris.Framework) {
 	e.logger = s.Logger
-	mainServer := s.Servers.Main()
-	e.keyfile = mainServer.Config.KeyFile
-	e.certfile = mainServer.Config.CertFile
-
-	if e.config.Host == "" {
-		e.config.Host = mainServer.Hostname()
+	if e.config.Hostname == "" {
+		e.config.Hostname = iris.ParseHostname(s.Config.VHost)
 	}
+
+	if e.config.Port <= 0 {
+		e.config.Port = DefaultPort
+	}
+
 	e.start()
 }
 
@@ -121,10 +120,10 @@ func (e *Plugin) start() {
 	}
 
 	cmd := utils.CommandBuilder("node", npm.Abs("alm/src/server.js"))
-	cmd.AppendArguments("-a", e.config.Username+":"+e.config.Password, "-h", e.config.Host, "-t", strconv.Itoa(e.config.Port), "-d", e.config.WorkingDir[0:len(e.config.WorkingDir)-1])
+	cmd.AppendArguments("-a", e.config.Username+":"+e.config.Password, "-h", e.config.Hostname, "-t", strconv.Itoa(e.config.Port), "-d", e.config.WorkingDir[0:len(e.config.WorkingDir)-1])
 	// for auto-start in the browser: cmd.AppendArguments("-o")
-	if e.keyfile != "" && e.certfile != "" {
-		cmd.AppendArguments("--httpskey", e.keyfile, "--httpscert", e.certfile)
+	if e.config.KeyFile != "" && e.config.CertFile != "" {
+		cmd.AppendArguments("--httpskey", e.config.KeyFile, "--httpscert", e.config.CertFile)
 	}
 
 	//For debug only:
@@ -139,6 +138,6 @@ func (e *Plugin) start() {
 	}
 
 	//we lose the internal error handling but ok...
-	e.logger.Printf("Editor is running at %s:%d | %s", e.config.Host, e.config.Port, e.config.WorkingDir)
+	e.logger.Printf("Editor is running at %s:5d | %s", e.config.Hostname, e.config.Port, e.config.WorkingDir)
 
 }

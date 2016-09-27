@@ -9,14 +9,19 @@ import (
 const (
 	DefaultUsername = "iris"
 	DefaultPassword = "admin!123"
+	DefaultPort     = 4444
 )
 
 // Config the configs for the Editor plugin
 type Config struct {
-	// Host if empty used the iris server's host
-	Host string
+	// Hostname if empty used the iris server's hostname
+	Hostname string
 	// Port if 0 4444
 	Port int
+	// KeyFile the key file(ssl optional)
+	KeyFile string
+	// CertFile the cert file (ssl optional)
+	CertFile string
 	// WorkingDir if empty "./"
 	WorkingDir string
 	// Username if empty iris
@@ -27,7 +32,7 @@ type Config struct {
 
 // DefaultConfig returns the default configs for the Editor plugin
 func DefaultConfig() Config {
-	return Config{"", 4444, "." + utils.PathSeparator, DefaultUsername, DefaultPassword}
+	return Config{"", 4444, "", "", "." + utils.PathSeparator, DefaultUsername, DefaultPassword}
 }
 
 // Merge merges the default with the given config and returns the result

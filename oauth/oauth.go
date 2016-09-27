@@ -53,7 +53,7 @@ func (p *Plugin) URL(providerName string) string {
 
 // PreListen init the providers and the routes before server's listens
 func (p *Plugin) PreListen(s *iris.Framework) {
-	oauthProviders := p.Config.GenerateProviders(s.Servers.Main().FullHost())
+	oauthProviders := p.Config.GenerateProviders(s.Config.VHost)
 	if len(oauthProviders) > 0 {
 		goth.UseProviders(oauthProviders...)
 		// set the mux path to handle the registered providers
