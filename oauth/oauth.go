@@ -51,8 +51,9 @@ func (p *Plugin) URL(providerName string) string {
 	return p.station.URL(p.Config.RouteName, providerName)
 }
 
-// PreListen init the providers and the routes before server's listens
-func (p *Plugin) PreListen(s *iris.Framework) {
+// PreBuild plugin in order to register the oauth route
+func (p *Plugin) PreBuild(s *iris.Framework) {
+
 	oauthProviders := p.Config.GenerateProviders(s.Config.VHost)
 	if len(oauthProviders) > 0 {
 		goth.UseProviders(oauthProviders...)
@@ -60,9 +61,10 @@ func (p *Plugin) PreListen(s *iris.Framework) {
 		s.Get(p.Config.Path+"/:provider", func(ctx *iris.Context) {
 			err := gothic.BeginAuthHandler(ctx)
 			if err != nil {
-				s.Logger.Println("\n[IRIS OAUTH MIDDLEWARE] Error:" + err.Error())
+				s.Logger.Println("\n[IRIS OAUTH PLUGIN] Error:" + err.Error())
 			}
 		})(p.Config.RouteName)
+		//println("registered " + p.Config.Path + "/:provider")
 
 		authMiddleware := func(ctx *iris.Context) {
 			user, err := gothic.CompleteUserAuth(ctx)
