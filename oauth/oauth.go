@@ -54,7 +54,7 @@ func (p *Plugin) URL(providerName string) string {
 // PreBuild plugin in order to register the oauth route
 func (p *Plugin) PreBuild(s *iris.Framework) {
 
-	oauthProviders := p.Config.GenerateProviders(s.Config.VHost)
+	oauthProviders := p.Config.GenerateProviders(s.Config.VScheme + s.Config.VHost)
 	if len(oauthProviders) > 0 {
 		goth.UseProviders(oauthProviders...)
 		// set the mux path to handle the registered providers
