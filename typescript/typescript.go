@@ -66,7 +66,7 @@ func (t *Plugin) Activate(container iris.PluginContainer) error {
 
 // GetName ...
 func (t *Plugin) GetName() string {
-	return Name + "[" + utils.RandomString(10) + "]" // this allows the specific plugin to be registed more than one time
+	return Name + "[" + RandomString(10) + "]" // this allows the specific plugin to be registed more than one time
 }
 
 // GetDescription TypescriptPlugin scans and compile typescript files with ease
