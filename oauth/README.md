@@ -5,7 +5,7 @@ This is a plugin which using the [iris-contrib/gothic](https://github.com/iris-c
 ## Install
 
 ```sh
-$ go get -u github.com/iris-contrib/plugin/oauth
+$ go get -u gopkg.in/iris-contrib/plugin.v4/oauth
 ```
 
 ## How to use

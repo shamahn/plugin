@@ -3,8 +3,8 @@ package typescript
 import (
 	"encoding/json"
 	"github.com/imdario/mergo"
-	"github.com/iris-contrib/npm"
-	"github.com/iris-contrib/plugin/editor"
+	"gopkg.in/iris-contrib/npm.v4"
+	"gopkg.in/iris-contrib/plugin.v4/editor"
 	"io/ioutil"
 	"os"
 	"reflect"

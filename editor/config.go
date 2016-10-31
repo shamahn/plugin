@@ -2,7 +2,7 @@ package editor
 
 import (
 	"github.com/imdario/mergo"
-	"github.com/kataras/iris/utils"
+	"gopkg.in/kataras/iris.v4/utils"
 )
 
 // Default values for the configuration

@@ -1,13 +1,13 @@
 package oauth
 
 import (
-	"github.com/iris-contrib/gothic"
-	"github.com/kataras/iris"
 	"github.com/markbates/goth"
+	"gopkg.in/iris-contrib/gothic.v4"
+	"gopkg.in/kataras/iris.v4"
 )
 
 // Plugin is a plugin which helps you to use OAuth/OAuth2 apis from famous websites
-// See more at https://github.com/iris-contrib/gothic
+// See more at https://gopkg.in/iris-contrib/gothic
 type Plugin struct {
 	Config          Config
 	successHandlers []iris.HandlerFunc

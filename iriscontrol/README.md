@@ -5,7 +5,7 @@ Iris control is a plugin which gives you a little control over your Iris station
 ## Install
 
 ```sh
-$ go get -u github.com/iris-contrib/plugin/iriscontrol
+$ go get -u gopkg.in/iris-contrib/plugin.v4/iriscontrol
 ```
 
 
@@ -17,8 +17,8 @@ iris.Plugins.Add(iriscontrol.New(PORT, AUTHENTICATED_USERS))
 package main
 
 import (
-	"github.com/kataras/iris"
-	"github.com/iris-contrib/plugin/iriscontrol"
+	"gopkg.in/kataras/iris.v4"
+	"gopkg.in/iris-contrib/plugin.v4/iriscontrol"
 )
 
 func main() {
@@ -41,4 +41,4 @@ func main() {
 }
 ```
 
-[![Iris control show case](https://raw.githubusercontent.com/iris-contrib/website/gh-pages/assets/iriscontrolplugin.gif)](https://github.com/iris-contrib/examples/tree/master/plugin_iriscontrol)
+[![Iris control show case](https://raw.githubusercontent.com/iris-contrib/website/gh-pages/assets/iriscontrolplugin.gif)](https://gopkg.in/iris-contrib/examples/tree/master/plugin_iriscontrol)

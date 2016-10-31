@@ -14,7 +14,7 @@ This plugin starts it's own server, if Iris server is using TLS then the editor 
 ## Install
 
 ```sh
-$ go get -u github.com/iris-contrib/plugin/editor
+$ go get -u gopkg.in/iris-contrib/plugin.v4/editor
 ```
 
 ## How to use
@@ -24,8 +24,8 @@ $ go get -u github.com/iris-contrib/plugin/editor
 package main
 
 import (
-	"github.com/kataras/iris"
-	"github.com/iris-contrib/plugin/editor"
+	"gopkg.in/kataras/iris.v4"
+	"gopkg.in/iris-contrib/plugin.v4/editor"
 )
 
 func main(){
@@ -54,4 +54,4 @@ Would be readily available to anyone who could intercept the HTTP request. [Read
 
 > The editor can't work if the directory doesn't contains a [tsconfig.json](http://www.typescriptlang.org/docs/handbook/tsconfig.json.html).
 
-> If you are using the [typescript plugin](https://github.com/iris-contrib/plugin/tree/master/typescript) you don't have to call the .Dir(...)
+> If you are using the [typescript plugin](https://gopkg.in/iris-contrib/plugin.v4/tree/master/typescript) you don't have to call the .Dir(...)

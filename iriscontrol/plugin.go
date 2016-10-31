@@ -3,16 +3,16 @@ package iriscontrol
 import (
 	"os"
 
-	"github.com/kataras/go-fs"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/utils"
+	"gopkg.in/kataras/go-fs.v0"
+	"gopkg.in/kataras/iris.v4"
+	"gopkg.in/kataras/iris.v4/utils"
 )
 
 // Name "Iris Control"
 const Name = "Iris Control"
 
 var (
-	assetsURL       = "https://github.com/iris-contrib/iris-control-assets/archive/master.zip"
+	assetsURL       = "https://github.com/iris-contrib/iris-control-assets/archive/4.0.0.zip"
 	assetsUnzipname = "iris-control-assets"
 	assetsPath      = ""
 	workingDir      = ""

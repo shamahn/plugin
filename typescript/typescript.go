@@ -6,10 +6,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/iris-contrib/npm"
-	"github.com/iris-contrib/plugin/editor"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/utils"
+	"gopkg.in/iris-contrib/npm.v4"
+	"gopkg.in/iris-contrib/plugin.v4/editor"
+	"gopkg.in/kataras/iris.v4/utils"
+	"gopkg.inkataras/iris.v4"
 	"log"
 )
 

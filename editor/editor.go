@@ -10,9 +10,9 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/iris-contrib/npm"
-	"github.com/kataras/iris"
-	"github.com/kataras/iris/utils"
+	"gopkg.in/iris-contrib/npm.v4"
+	"gopkg.in/kataras/iris.v4"
+	"gopkg.in/kataras/iris.v4/utils"
 	"log"
 )
 

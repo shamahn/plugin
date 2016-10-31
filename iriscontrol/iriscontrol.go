@@ -4,9 +4,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/iris-contrib/middleware/basicauth"
-	"github.com/kataras/go-template/html"
-	"github.com/kataras/iris"
+	"gopkg.in/iris-contrib/middleware.v4/basicauth"
+	"gopkg.in/kataras/go-template.v0/html"
+	"gopkg.in/kataras/iris.v4"
 )
 
 type (
