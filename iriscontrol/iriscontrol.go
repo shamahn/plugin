@@ -6,7 +6,7 @@ import (
 
 	"github.com/iris-contrib/middleware/basicauth"
 	"github.com/kataras/go-template/html"
-	"gopkg.in/kataras/iris.v5"
+	"github.com/kataras/iris"
 )
 
 type (

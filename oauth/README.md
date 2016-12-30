@@ -5,9 +5,9 @@ This is a plugin which using the [iris-contrib/gothic](https://github.com/iris-c
 ## Install
 
 ```sh
-$ go get -u github.com/iris-contrib/plugin.v5//oauth
+$ go get -u github.com/iris-contrib/plugin/oauth
 ```
 
 ## How to use
 
-Read the OAuth, Oauth2 section [here](https://kataras.gitbooks.io/iris-v5/content/plugin-oauth.html)
+Read the OAuth, Oauth2 section [here](https://kataras.gitbooks.io/iris/content/plugin-oauth.html)

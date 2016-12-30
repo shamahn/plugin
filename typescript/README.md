@@ -15,7 +15,7 @@ This is an Iris and typescript bridge plugin.
 ## Install
 
 ```sh
-$ go get -u github.com/iris-contrib/plugin.v5//typescript
+$ go get -u github.com/iris-contrib/plugin/typescript
 ```
 
 
@@ -39,7 +39,7 @@ For example /node_modules/ will ignore all typescript files that are inside at A
 package main
 
 import (
-	"gopkg.in/kataras/iris.v5"
+	"github.com/kataras/iris"
 	"github.com/iris-contrib/plugin/typescript"
 )
 

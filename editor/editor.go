@@ -11,7 +11,7 @@ import (
 	"strconv"
 
 	"github.com/iris-contrib/npm"
-	"gopkg.in/kataras/iris.v5"
+	"github.com/kataras/iris"
 	"github.com/kataras/iris/utils"
 	"log"
 )
