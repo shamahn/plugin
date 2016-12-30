@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/kataras/go-fs"
-	"github.com/kataras/iris"
+	"gopkg.in/kataras/iris.v5"
 	"github.com/kataras/iris/utils"
 )
 

@@ -14,7 +14,7 @@ This plugin starts it's own server, if Iris server is using TLS then the editor 
 ## Install
 
 ```sh
-$ go get -u github.com/iris-contrib/plugin/editor
+$ go get -u github.com/iris-contrib/plugin.v5//editor
 ```
 
 ## How to use
@@ -24,7 +24,7 @@ $ go get -u github.com/iris-contrib/plugin/editor
 package main
 
 import (
-	"github.com/kataras/iris"
+	"gopkg.in/kataras/iris.v5"
 	"github.com/iris-contrib/plugin/editor"
 )
 

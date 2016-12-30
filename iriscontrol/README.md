@@ -5,7 +5,7 @@ Iris control is a plugin which gives you a little control over your Iris station
 ## Install
 
 ```sh
-$ go get -u github.com/iris-contrib/plugin/iriscontrol
+$ go get -u github.com/iris-contrib/plugin.v5//iriscontrol
 ```
 
 
@@ -17,7 +17,7 @@ iris.Plugins.Add(iriscontrol.New(PORT, AUTHENTICATED_USERS))
 package main
 
 import (
-	"github.com/kataras/iris"
+	"gopkg.in/kataras/iris.v5"
 	"github.com/iris-contrib/plugin/iriscontrol"
 )
 

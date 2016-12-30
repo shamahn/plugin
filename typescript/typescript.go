@@ -8,7 +8,7 @@ import (
 
 	"github.com/iris-contrib/npm"
 	"github.com/iris-contrib/plugin/editor"
-	"github.com/kataras/iris"
+	"gopkg.in/kataras/iris.v5"
 	"github.com/kataras/iris/utils"
 	"log"
 )

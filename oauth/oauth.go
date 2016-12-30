@@ -2,7 +2,7 @@ package oauth
 
 import (
 	"github.com/iris-contrib/gothic"
-	"github.com/kataras/iris"
+	"gopkg.in/kataras/iris.v5"
 	"github.com/markbates/goth"
 )
 
