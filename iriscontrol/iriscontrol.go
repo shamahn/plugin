@@ -59,9 +59,9 @@ var _ IrisControl = &iriscontrol{}
 func (i *iriscontrol) listen(f *iris.Framework) {
 	// set the path logger to the parent which will send the log via websocket to the browser
 	f.UseGlobalFunc(func(ctx *iris.Context) {
-		status := ctx.Response.StatusCode()
-		path := ctx.PathString()
-		method := ctx.MethodString()
+		status := ctx.ResponseWriter.StatusCode()
+		path := ctx.Path()
+		method := ctx.Method()
 		subdomain := ctx.Subdomain()
 		ip := ctx.RemoteAddr()
 		startTime := time.Now()
@@ -96,7 +96,7 @@ func (i *iriscontrol) initializeChild() {
 	i.child.Config.Websocket.Endpoint = "/ws"
 
 	// set the assets
-	i.child.Static("/public", assetsPath+"static", 1)
+	i.child.StaticWeb("/public", assetsPath+"static")
 
 	// set the authentication middleware to all except websocket
 	auth := basicauth.New(basicauth.Config{
@@ -111,7 +111,7 @@ func (i *iriscontrol) initializeChild() {
 		// FOR GOOGLE CHROME/CHRONIUM
 		// https://bugs.chromium.org/p/chromium/issues/detail?id=123862
 		// CROSS DOMAIN IS DISABLED so I think this is ok solution for now...
-		if ctx.PathString() == i.child.Config.Websocket.Endpoint {
+		if ctx.Path() == i.child.Config.Websocket.Endpoint {
 			ctx.Next()
 			return
 		}
